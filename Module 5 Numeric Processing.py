@@ -1,16 +1,29 @@
-with open("Random.txt") as random_file:
-    print("Reading from file Random.txt\n")
+# Homework 5: Numeric Processing
+# Program By: Esteban
+# File Name: H5_Num_Process.py
+# Function: This program reads and writes to files
+try:
+    with open("Random.txt") as random_file:
+        print("Reading from file Random.txt\n")
     
-    """ The buffer variable is a cleaner version of random.txt that
-    gets rid of trailing whitespaces and \n"""
-    
-    buffer = [int(line.strip()) for line in random_file if line.strip()]
+        """ The buffer variable is a cleaner version of random.txt that
+        gets rid of trailing whitespaces and \n"""
 
-    """ This loop prints out all the numbers from buffer"""
-    for each_line in buffer:
-        print(each_line)
+        buffer = [int(line.strip()) for line in random_file if line.strip()]
     
+        """ This loop prints out all the numbers from buffer"""
 
+        for each_line in buffer:
+            print(each_line)
+
+except FileNotFoundError:
+    print("Error: The file 'Random.txt' was not found")
+    buffer = []
+except ValueError:
+    print("Error: The file 'Random.txt' contains characters that aren't numbers")
+    buffer = []
+
+    
 """All the simple operations are nested under an if-statement in the 
 case that buffer does not exist"""
 if buffer:
